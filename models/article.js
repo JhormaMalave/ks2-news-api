@@ -11,12 +11,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // associations can be defined here
-      participacion.belongsTo(models.category,
-        {
-            as: 'category',
-            foreignKey: 'categoryId',
-        }
-      );
+      Article.belongsTo(models.Category, {
+        as: 'category',
+        foreignKey: 'categoryId',
+      });
     }
   }
   Article.init({
