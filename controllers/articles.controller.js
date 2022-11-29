@@ -1,4 +1,4 @@
-const db = require("../models");
+const db = require('../models');
 
 const Article = db.Article;
 
@@ -12,7 +12,7 @@ exports.findAll = async (req, res) => {
   } catch (err) {
     res.status(500).send({
       message:
-        err.message || "Ocurrió un error al obtener los artículos."
+        err.message || 'Ocurrió un error al obtener los artículos.'
     });
   }
 };
@@ -23,7 +23,7 @@ exports.create = async (req, res) => {
 
   if (checkIsEmpty) {
     res.status(400).send({
-      message: "Debes rellenar todos los campos"
+      message: 'Debes rellenar todos los campos'
     });
     return;
   }
@@ -43,7 +43,7 @@ exports.create = async (req, res) => {
   } catch (err) {
     res.status(500).send({
       message:
-        err.message || "Ocurrio un error al guardar el artículo."
+        err.message || 'Ocurrio un error al guardar el artículo.'
     });
   };
 };
@@ -58,7 +58,7 @@ exports.update = async (req, res) => {
 
     if (article == 1) {
       res.send({
-        message: "El artículo fue actualizado exitosamente."
+        message: 'El artículo fue actualizado exitosamente.'
       });
     } else {
       res.send({
@@ -67,8 +67,31 @@ exports.update = async (req, res) => {
     }
   } catch(err) {
       res.status(500).send({
-        message: "Error al actualizar el artículo"
+        message: 'Error al actualizar el artículo'
       });
   };
 };
 
+exports.delete = async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const article = await Article.destroy({where: { id: id }});
+    console.log(article);
+
+    if (article == 1) {
+      res.send({
+        message: 'El articulo fue eliminado existosamente!'
+      });
+    } else {
+      res.send({
+        message: 'No se pudo eliminar el artículo, revisa de que el artículo existe'
+      });
+    }
+
+  } catch(err) {
+    res.status(500).send({
+      message: 'No se pudo eliminar el artículo'
+    });
+  };
+};
