@@ -17,7 +17,6 @@ exports.findAll = async (req, res) => {
   }
 };
 
-
 exports.create = async (req, res) => {
   // Validate request
   const checkIsEmpty = (Object.keys(req.body).length === 0);
@@ -48,3 +47,28 @@ exports.create = async (req, res) => {
     });
   };
 };
+
+exports.update = async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const article = await Article.update(req.body, {
+      where: { id: id }
+    });
+
+    if (article == 1) {
+      res.send({
+        message: "El artículo fue actualizado exitosamente."
+      });
+    } else {
+      res.send({
+        message: 'No se pudo actualizar el artículo, revisa que llenaste los campos correctamente.',
+      });
+    }
+  } catch(err) {
+      res.status(500).send({
+        message: "Error al actualizar el artículo"
+      });
+  };
+};
+
