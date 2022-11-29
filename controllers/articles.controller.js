@@ -3,6 +3,25 @@ const db = require('../models');
 const Article = db.Article;
 
 // Retrieve all Articles from the database.
+exports.findOne = async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const article = await Article.findByPk(id);
+    if (article) {
+      res.send(article);
+    } else {
+      res.status(404).send({
+        message: 'El artículo no fue encontrado'
+      });
+    }
+  } catch (err) {
+    res.status(500).send({
+      message: 'Ocurrió un error al obtener el artículo.'
+    });
+  }
+};
+
 exports.findAll = async (req, res) => {
   const title = req.query.title;
 
