@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon -r dotenv/config app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "db:migrate": "sequelize-cli db:migrate",
     "db:g:migration": "sequelize-cli migration:generate --name",
@@ -16,6 +17,7 @@
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "nodemon": "^2.0.20",
     "pg": "^8.8.0",
     "sequelize": "^6.25.8"
   },
