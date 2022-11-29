@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "db:migrate": "sequelize-cli db:migrate",
-    "db:g:migration": "sequelize-cli migration:generate --name"
+    "db:g:migration": "sequelize-cli migration:generate --name",
+    "db:seeds": "sequelize-cli db:seed:all",
+    "db:g:seed": "sequelize-cli seed:generate --name"
   },
   "keywords": [],
   "author": "",
