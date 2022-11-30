@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const db = require('../models');
 
 const Article = db.Article;
@@ -23,10 +24,18 @@ exports.findOne = async (req, res) => {
 };
 
 exports.findAll = async (req, res) => {
-  const title = req.query.title;
+  const search = req.query.search ? req.query.search : '';
 
   try {
-    const articles = await Article.findAll({include: [{model: db.Category, as: 'category'}]});
+    const articles = await Article.findAll({
+      include: [{model: db.Category, as: 'category'}],
+      where: {
+        title: {[Op.iLike]: `%${ search }%`}
+      },
+      order: [
+        ['createdAt', 'DESC']
+      ]
+    });
     res.send(articles);
   } catch (err) {
     res.status(500).send({
