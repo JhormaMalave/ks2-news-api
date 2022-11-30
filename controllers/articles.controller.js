@@ -7,7 +7,7 @@ exports.findOne = async (req, res) => {
   const id = req.params.id;
 
   try {
-    const article = await Article.findByPk(id);
+    const article = await Article.findByPk(id, {include: [{model: db.Category, as: 'category'}]});
     if (article) {
       res.send(article);
     } else {
@@ -26,7 +26,7 @@ exports.findAll = async (req, res) => {
   const title = req.query.title;
 
   try {
-    const articles = await Article.findAll();
+    const articles = await Article.findAll({include: [{model: db.Category, as: 'category'}]});
     res.send(articles);
   } catch (err) {
     res.status(500).send({
