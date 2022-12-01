@@ -1,2 +1,14 @@
-# ks2-news-api
-Ks2 Api with nodejs, express and postgres
+# ks2-news-front
+
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run dev
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
