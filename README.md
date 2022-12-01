@@ -1,14 +1,24 @@
-# ks2-news-front
+# ks2 Newspaper
 
 ## Project setup
-```
-npm install
-```
+Set your database credentials on *./env*, like this:
 
+    DB_HOST=hostname
+    DB_USERNAME=username
+    DB_PASSWORD=password
+    DB_NAME=databasename
+   
+Run in console
+```
+yarn install
+```
+```
+yarn db:migrate
+```
+```
+yarn db:seeds
+```
 ### Compiles and hot-reloads for development
 ```
-npm run dev
+yarn run dev
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
