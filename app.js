@@ -33,6 +33,7 @@ app.get('/', (req, res) => {
 
 // Routes
 require("./routes/article.routes")(app);
+require("./routes/category.routes")(app);
 
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
