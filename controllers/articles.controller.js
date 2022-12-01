@@ -61,6 +61,7 @@ exports.create = async (req, res) => {
     title: req.body.title,
     author: req.body.author,
     content: req.body.content,
+    image: req.body.image,
     categoryId: req.body.categoryId
   };
 
